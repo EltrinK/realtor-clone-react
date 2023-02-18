@@ -1,7 +1,8 @@
+import { Routes } from "routes/Routes";
 const App = () => {
   return (
     <>
-      <h1 className="bg-slate-600">Hello</h1>
+      <Routes />
     </>
   );
 };
