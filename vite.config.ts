@@ -9,4 +9,13 @@ export default defineConfig({
     port: 8000,
   },
   plugins: [react(), tsconfigPaths()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+        @import "./src/styles/config";
+        `,
+      },
+    },
+  },
 });
