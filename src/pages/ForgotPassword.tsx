@@ -2,12 +2,26 @@ import { useState } from "react";
 import signInPic from "@assets/maria-ziegler-jJnZg7vBfMs-unsplash.jpg";
 import { Link } from "react-router-dom";
 import { OAuth } from "@components/OAuth";
+import { toast } from "react-toastify";
+import { auth } from "firebase";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 export const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Email was sent!");
+    } catch (error) {
+      toast.error("Couldn't find an email");
+    }
   };
 
   return (
@@ -18,7 +32,7 @@ export const ForgotPassword = () => {
           <img src={signInPic} alt="key" className="w-full rounded-2xl" />
         </div>
         <div className="w-full md:w[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               className="mb-6 w-full px-4 py-2 text-xl text-gray-700 border-gray-300 rounded transition ease-in-out"
               type="email"
