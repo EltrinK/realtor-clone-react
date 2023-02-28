@@ -16,7 +16,7 @@ export const Header = () => {
       <header className="flex justify-between items-center px-3 max-w-6xl mx-auto">
         <div>
           <img
-            src={logo}
+            src={logo}  
             alt="logo"
             className="h-5 cursor-pointer"
             onClick={() => navigate("/")}
@@ -26,7 +26,7 @@ export const Header = () => {
           <ul className="flex space-x-10">
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/") && "text-black border-b-red-500"
+                pathMatchRoute("/") && "text-gray-900"
               }`}
               onClick={() => navigate("/")}
             >
@@ -34,7 +34,7 @@ export const Header = () => {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/offers") && "text-black border-b-red-500"
+                pathMatchRoute("/offers") && "text-gray-900"
               }`}
               onClick={() => navigate("/offers")}
             >
@@ -42,7 +42,7 @@ export const Header = () => {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/sign-in") && "text-black border-b-red-500"
+                pathMatchRoute("/sign-in") && "text-gray-900"
               }`}
               onClick={() => navigate("/sign-in")}
             >
