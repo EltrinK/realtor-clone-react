@@ -1,4 +1,5 @@
 import { RouteObject, useRoutes } from "react-router-dom";
+import { PrivateRoute } from "@components/PrivateRoute";
 
 import {
   Home,
@@ -12,7 +13,10 @@ import {
 
 export const dashboardRoutes: RouteObject[] = [
   { path: "/", element: <Home /> },
-  { path: "/profile", element: <Profile /> },
+  {
+    element: <PrivateRoute />,
+    children: [{ path: "/profile", element: <Profile /> }],
+  },
   { path: "/sign-in", element: <SignIn /> },
   { path: "/sign-up", element: <SignUp /> },
   { path: "/forgot-password", element: <ForgotPassword /> },

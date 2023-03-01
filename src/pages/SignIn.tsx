@@ -8,11 +8,16 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "firebase";
 import { toast } from "react-toastify";
 
+interface FormDataTypes {
+  email: string;
+  password: string;
+}
+
 export const SignIn = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataTypes>({
     email: "",
     password: "",
   });
