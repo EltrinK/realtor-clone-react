@@ -1,9 +1,23 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "@assets/rdc-logo-default.svg";
+import { useEffect, useState } from "react";
+import { auth } from "firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 export const Header = () => {
+  const [pageState, setPageState] = useState("Sign In");
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setPageState("Profile");
+      } else {
+        setPageState("Sign In");
+      }
+    });
+  }, [auth]);
 
   const pathMatchRoute = (route: string) => {
     if (route === location.pathname) {
@@ -16,7 +30,7 @@ export const Header = () => {
       <header className="flex justify-between items-center px-3 max-w-6xl mx-auto">
         <div>
           <img
-            src={logo}  
+            src={logo}
             alt="logo"
             className="h-5 cursor-pointer"
             onClick={() => navigate("/")}
@@ -42,11 +56,12 @@ export const Header = () => {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/sign-in") && "text-gray-900"
+                (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
+                "text-gray-900"
               }`}
-              onClick={() => navigate("/sign-in")}
+              onClick={() => navigate("/profile")}
             >
-              Sign In
+              {pageState}
             </li>
           </ul>
         </div>
