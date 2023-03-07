@@ -9,6 +9,7 @@ import {
   SignIn,
   SignUp,
   Error404,
+  CreateListing,
 } from "../pages";
 
 export const dashboardRoutes: RouteObject[] = [
@@ -21,6 +22,7 @@ export const dashboardRoutes: RouteObject[] = [
   { path: "/sign-up", element: <SignUp /> },
   { path: "/forgot-password", element: <ForgotPassword /> },
   { path: "/offers", element: <Offers /> },
+  { path: "/create-listing", element: <CreateListing /> },
   { path: "*", element: <Error404 /> },
 ];
 
