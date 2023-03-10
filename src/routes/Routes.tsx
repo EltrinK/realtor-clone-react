@@ -16,13 +16,15 @@ export const dashboardRoutes: RouteObject[] = [
   { path: "/", element: <Home /> },
   {
     element: <PrivateRoute />,
-    children: [{ path: "/profile", element: <Profile /> }],
+    children: [
+      { path: "/profile", element: <Profile /> },
+      { path: "/create-listing", element: <CreateListing /> },
+    ],
   },
   { path: "/sign-in", element: <SignIn /> },
   { path: "/sign-up", element: <SignUp /> },
   { path: "/forgot-password", element: <ForgotPassword /> },
   { path: "/offers", element: <Offers /> },
-  { path: "/create-listing", element: <CreateListing /> },
   { path: "*", element: <Error404 /> },
 ];
 
